@@ -51,26 +51,17 @@ class PopoverViewController: NSViewController
     
     private func arrangeTargetViews()
     {
-        for var i = self.targetViews!.count - 1; i >= 0; i--
+        var upperView: NSView = self.addButton
+        
+        for targetView: TargetView in self.targetViews!.reverse()
         {
-            let targetView = self.targetViews![i] as TargetView
-            
             targetView.snp_remakeConstraints { (make) -> Void in
-                let upperView: NSView!
-                
-                if i == 0
-                {
-                    upperView = self.addButton
-                }
-                else
-                {
-                    upperView = self.targetViews![i - 1]
-                }
-                
                 make.centerY.equalTo(upperView.snp_centerY).offset(40.0)
                 make.centerX.equalTo(upperView.snp_centerX)
                 make.width.equalTo(450)
                 make.height.equalTo(150)
+                
+                upperView = targetView
             }
         }
     }
