@@ -13,13 +13,12 @@ import SnapKit
 class PopoverViewController: NSViewController
 {
     @IBOutlet var addButton: NSButton!
-    var targetViews: NSMutableArray?
-    
+    var targetViews: Array<TargetView>?
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.targetViews = NSMutableArray()
+        self.targetViews = Array()
     }
     
     func shouldAddTarget() -> Bool
@@ -45,7 +44,7 @@ class PopoverViewController: NSViewController
         self.view.addSubview(targetView)
         targetView.removeButton.target = self
         targetView.removeButton.action = Selector("removeTargetView:")
-        self.targetViews?.addObject(targetView)
+        self.targetViews?.append(targetView)
         self.arrangeTargetViews()
         self.addButton.enabled = self.shouldAddTarget()
     }
@@ -54,7 +53,7 @@ class PopoverViewController: NSViewController
     {
         for var i = self.targetViews!.count - 1; i >= 0; i--
         {
-            let targetView = self.targetViews!.objectAtIndex(i) as! TargetView
+            let targetView = self.targetViews![i] as TargetView
             
             targetView.snp_remakeConstraints { (make) -> Void in
                 let upperView: NSView!
@@ -65,7 +64,7 @@ class PopoverViewController: NSViewController
                 }
                 else
                 {
-                    upperView = self.targetViews!.objectAtIndex(i - 1) as! NSView
+                    upperView = self.targetViews![i - 1]
                 }
                 
                 make.centerY.equalTo(upperView.snp_centerY).offset(40.0)
@@ -76,10 +75,20 @@ class PopoverViewController: NSViewController
         }
     }
     
-    func removeTargetView(targetView: TargetView)
+    func removeTargetView(sender: NSButton)
     {
-        self.targetViews?.removeObject(targetView)
-        targetView.removeFromSuperview()
+        self.targetViews = self.targetViews?.filter({(view: TargetView) -> Bool in
+            let isMatch = view.removeButton != sender
+            
+            if !isMatch
+            {
+                view.removeFromSuperview()
+            }
+            
+            return isMatch
+        })
+        
         self.arrangeTargetViews()
+        self.addButton.enabled = self.shouldAddTarget()
     }
 }
