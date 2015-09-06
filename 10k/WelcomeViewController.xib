@@ -50,7 +50,7 @@
                         <constraint firstAttribute="height" constant="32" id="nNq-xA-oyj"/>
                     </constraints>
                     <buttonCell key="cell" type="bevel" title="Done" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="VHt-4r-b8a">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <behavior key="behavior" lightByContents="YES"/>
                         <font key="font" size="16" name="AvenirNext-Bold"/>
                     </buttonCell>
                     <connections>

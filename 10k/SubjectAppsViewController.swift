@@ -8,12 +8,18 @@
 
 import Cocoa
 
-class SubjectAppsViewController: NSViewController {
-
+class SubjectAppsViewController: NSViewController
+{
+    @IBOutlet var applicationsTableView: NSTableView!
+    var applications: Array<String> = []
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        println(self.fetchApplications())
+        self.applications = self.fetchApplications()
+        self.applicationsTableView.intercellSpacing = CGSizeZero
+        self.applicationsTableView.setDelegate(self)
+        self.applicationsTableView.setDataSource(self)
     }
     
     func fetchApplications() -> Array<String>
@@ -34,7 +40,42 @@ class SubjectAppsViewController: NSViewController {
             return fileName as! String
         }).filter({(fileName) -> Bool in
             return fileName.pathExtension == "app"
+        }).map({(appName: String) -> String in
+            return appName.stringByDeletingPathExtension
         })
     }
+}
+
+// MARK: Table View Delegate & Datasource Extension
+
+extension SubjectAppsViewController: NSTableViewDelegate, NSTableViewDataSource
+{
+    func numberOfRowsInTableView(tableView: NSTableView) -> Int
+    {
+        return self.applications.count
+    }
     
+    func tableView(tableView: NSTableView, viewForTableColumn tableColumn: NSTableColumn?, row: Int) -> NSView?
+    {
+        var loadedViews: NSArray?
+        NSBundle.mainBundle().loadNibNamed("ApplicationTableViewCell", owner: nil, topLevelObjects: &loadedViews)
+        // our view may not be firstItem of loadedViews
+        
+        var appCell: ApplicationTableViewCell!
+        for obj: AnyObject in loadedViews!
+        {
+            if obj.isKindOfClass(ApplicationTableViewCell)
+            {
+                appCell = obj as! ApplicationTableViewCell
+            }
+        }
+        
+        appCell.setApplication(self.applications[row])
+        return appCell
+    }
+    
+    func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat
+    {
+        return 30
+    }
 }
