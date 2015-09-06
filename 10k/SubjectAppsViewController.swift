@@ -10,9 +10,31 @@ import Cocoa
 
 class SubjectAppsViewController: NSViewController {
 
-    override func viewDidLoad() {
+    override func viewDidLoad()
+    {
         super.viewDidLoad()
-        // Do view setup here.
+        println(self.fetchApplications())
+    }
+    
+    func fetchApplications() -> Array<String>
+    {
+        let fileManager = NSFileManager.defaultManager()
+        
+        let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.ApplicationDirectory, NSSearchPathDomainMask.LocalDomainMask, true)
+        let applicationsURL = NSURL(fileURLWithPath: paths.first as! String)
+        
+        let dirEnumerator = fileManager.enumeratorAtURL(applicationsURL!, includingPropertiesForKeys: [NSURLNameKey], options:NSDirectoryEnumerationOptions.SkipsPackageDescendants, errorHandler: nil)!
+        
+        let applicationURLS = dirEnumerator.allObjects
+        
+        return applicationURLS.map({(appURL) -> String in
+            var fileName: AnyObject?
+            var error: NSError?
+            appURL.getResourceValue(&fileName, forKey: NSURLNameKey, error: &error)
+            return fileName as! String
+        }).filter({(fileName) -> Bool in
+            return fileName.pathExtension == "app"
+        })
     }
     
 }
