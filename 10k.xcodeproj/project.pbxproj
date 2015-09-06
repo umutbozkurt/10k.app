@@ -12,11 +12,13 @@
 		2C6E32171B98E51C008E7C44 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C6E32151B98E51C008E7C44 /* MainMenu.xib */; };
 		2C6E32231B98E51C008E7C44 /* _0kTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6E32221B98E51C008E7C44 /* _0kTests.swift */; };
 		2C6E322F1B98E540008E7C44 /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6E322E1B98E540008E7C44 /* EventMonitor.swift */; };
-		2C6E32331B98E557008E7C44 /* PopoverViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6E32311B98E557008E7C44 /* PopoverViewController.swift */; };
-		2C6E32341B98E557008E7C44 /* PopoverViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C6E32321B98E557008E7C44 /* PopoverViewController.xib */; };
+		2C6E32331B98E557008E7C44 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6E32311B98E557008E7C44 /* WelcomeViewController.swift */; };
+		2C6E32341B98E557008E7C44 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C6E32321B98E557008E7C44 /* WelcomeViewController.xib */; };
 		2C6E323E1B998A84008E7C44 /* NSFont+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6E323D1B998A84008E7C44 /* NSFont+Extensions.swift */; };
 		2CA2C9D11B9B16C700A39B93 /* TargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA2C9D01B9B16C700A39B93 /* TargetView.swift */; };
 		2CA2C9D31B9B18FA00A39B93 /* TargetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CA2C9D21B9B18FA00A39B93 /* TargetView.xib */; };
+		2CA2C9DA1B9C331D00A39B93 /* SubjectAppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA2C9D81B9C331D00A39B93 /* SubjectAppsViewController.swift */; };
+		2CA2C9DB1B9C331D00A39B93 /* SubjectAppsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CA2C9D91B9C331D00A39B93 /* SubjectAppsViewController.xib */; };
 		DC131C84BE663A1CADE19798 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B58946B9815030CB22E81C /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		EDD24E9990220FDBB7BCB2A0 /* Pods_10k.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E74576C2B352B702C12BDE /* Pods_10k.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
@@ -41,11 +43,13 @@
 		2C6E32211B98E51C008E7C44 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2C6E32221B98E51C008E7C44 /* _0kTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = _0kTests.swift; sourceTree = "<group>"; };
 		2C6E322E1B98E540008E7C44 /* EventMonitor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
-		2C6E32311B98E557008E7C44 /* PopoverViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopoverViewController.swift; sourceTree = "<group>"; };
-		2C6E32321B98E557008E7C44 /* PopoverViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PopoverViewController.xib; sourceTree = "<group>"; };
+		2C6E32311B98E557008E7C44 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
+		2C6E32321B98E557008E7C44 /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
 		2C6E323D1B998A84008E7C44 /* NSFont+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSFont+Extensions.swift"; sourceTree = "<group>"; };
 		2CA2C9D01B9B16C700A39B93 /* TargetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetView.swift; sourceTree = "<group>"; };
 		2CA2C9D21B9B18FA00A39B93 /* TargetView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TargetView.xib; sourceTree = "<group>"; };
+		2CA2C9D81B9C331D00A39B93 /* SubjectAppsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectAppsViewController.swift; sourceTree = "<group>"; };
+		2CA2C9D91B9C331D00A39B93 /* SubjectAppsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SubjectAppsViewController.xib; sourceTree = "<group>"; };
 		5C5065FB2CE581B3970FBA98 /* Pods-10k.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-10k.debug.xcconfig"; path = "Pods/Target Support Files/Pods-10k/Pods-10k.debug.xcconfig"; sourceTree = "<group>"; };
 		8BC7106F5240CBF601F5F331 /* Pods-10k.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-10k.release.xcconfig"; path = "Pods/Target Support Files/Pods-10k/Pods-10k.release.xcconfig"; sourceTree = "<group>"; };
 		93E74576C2B352B702C12BDE /* Pods_10k.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_10k.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -151,8 +155,10 @@
 		2C6E32301B98E54A008E7C44 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2C6E32311B98E557008E7C44 /* PopoverViewController.swift */,
-				2C6E32321B98E557008E7C44 /* PopoverViewController.xib */,
+				2C6E32311B98E557008E7C44 /* WelcomeViewController.swift */,
+				2C6E32321B98E557008E7C44 /* WelcomeViewController.xib */,
+				2CA2C9D81B9C331D00A39B93 /* SubjectAppsViewController.swift */,
+				2CA2C9D91B9C331D00A39B93 /* SubjectAppsViewController.xib */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -277,8 +283,9 @@
 			files = (
 				2C6E32141B98E51C008E7C44 /* Images.xcassets in Resources */,
 				2C6E32171B98E51C008E7C44 /* MainMenu.xib in Resources */,
-				2C6E32341B98E557008E7C44 /* PopoverViewController.xib in Resources */,
+				2C6E32341B98E557008E7C44 /* WelcomeViewController.xib in Resources */,
 				2CA2C9D31B9B18FA00A39B93 /* TargetView.xib in Resources */,
+				2CA2C9DB1B9C331D00A39B93 /* SubjectAppsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,8 +352,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C6E32121B98E51C008E7C44 /* AppDelegate.swift in Sources */,
+				2CA2C9DA1B9C331D00A39B93 /* SubjectAppsViewController.swift in Sources */,
 				2C6E323E1B998A84008E7C44 /* NSFont+Extensions.swift in Sources */,
-				2C6E32331B98E557008E7C44 /* PopoverViewController.swift in Sources */,
+				2C6E32331B98E557008E7C44 /* WelcomeViewController.swift in Sources */,
 				2C6E322F1B98E540008E7C44 /* EventMonitor.swift in Sources */,
 				2CA2C9D11B9B16C700A39B93 /* TargetView.swift in Sources */,
 			);

@@ -34,7 +34,7 @@ class AppDelegate: NSObject, NSApplicationDelegate
             }
         }
         
-        self.popover.contentViewController = PopoverViewController(nibName:"PopoverViewController", bundle:nil)
+        self.popover.contentViewController = WelcomeViewController(nibName:"WelcomeViewController", bundle:nil)
     }
     
     func applicationWillTerminate(aNotification: NSNotification)

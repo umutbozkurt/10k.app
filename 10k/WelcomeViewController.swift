@@ -1,5 +1,5 @@
 //
-//  PopoverViewController.swift
+//  WelcomeViewController.swift
 //  Outlier
 //
 //  Created by Umut Bozkurt on 03/09/15.
@@ -10,20 +10,28 @@ import Cocoa
 import SnapKit
 
 
-class PopoverViewController: NSViewController
+class WelcomeViewController: NSViewController
 {
     @IBOutlet var addButton: NSButton!
+    @IBOutlet var doneButton: NSButton!
+    
     var targetViews: Array<TargetView>?
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
         self.targetViews = Array()
+        self.doneButton.enabled = self.shouldSubmit()
     }
     
     func shouldAddTarget() -> Bool
     {
         return self.targetViews?.count < 3
+    }
+    
+    func shouldSubmit() -> Bool
+    {
+        return self.targetViews?.count > 0
     }
 
     @IBAction func addTarget(sender: AnyObject)
@@ -47,6 +55,7 @@ class PopoverViewController: NSViewController
         self.targetViews?.append(targetView)
         self.arrangeTargetViews()
         self.addButton.enabled = self.shouldAddTarget()
+        self.doneButton.enabled = self.shouldSubmit()
     }
     
     private func arrangeTargetViews()
@@ -56,7 +65,7 @@ class PopoverViewController: NSViewController
         for targetView: TargetView in self.targetViews!.reverse()
         {
             targetView.snp_remakeConstraints { (make) -> Void in
-                make.centerY.equalTo(upperView.snp_centerY).offset(40.0)
+                make.centerY.equalTo(upperView.snp_centerY).offset(40)
                 make.centerX.equalTo(upperView.snp_centerX)
                 make.width.equalTo(450)
                 make.height.equalTo(150)
@@ -81,5 +90,14 @@ class PopoverViewController: NSViewController
         
         self.arrangeTargetViews()
         self.addButton.enabled = self.shouldAddTarget()
+        self.doneButton.enabled = self.shouldSubmit()
+    }
+    @IBAction func submit(sender: NSButton)
+    {
+        let subjectVC = SubjectAppsViewController(nibName: "SubjectAppsViewController", bundle: nil)
+        
+        // switches view controllers
+        let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.popover.contentViewController = subjectVC
     }
 }
