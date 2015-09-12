@@ -8,6 +8,8 @@
             <connections>
                 <outlet property="applicationsTableView" destination="NMR-pf-ssU" id="95d-sV-TDO"/>
                 <outlet property="currentSubjectLabel" destination="9FA-Hw-byn" id="bpU-yR-U5b"/>
+                <outlet property="nextButton" destination="xLo-Nt-bUT" id="UTL-Af-5kY"/>
+                <outlet property="previousButton" destination="GFb-ex-ZFl" id="5fT-2e-zbU"/>
                 <outlet property="seperator" destination="t0R-Wm-T3r" id="n4H-ah-slU"/>
                 <outlet property="titleLabel" destination="CtZ-G5-lhs" id="07m-vS-hYb"/>
                 <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
@@ -100,6 +102,9 @@
                         <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                         <font key="font" size="16" name="AvenirNext-DemiBoldItalic"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="promptNextSubject:" target="-2" id="lUz-0a-li7"/>
+                    </connections>
                 </button>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GFb-ex-ZFl">
                     <rect key="frame" x="20" y="361" width="60" height="39"/>
@@ -107,6 +112,9 @@
                         <behavior key="behavior" lightByContents="YES"/>
                         <font key="font" size="16" name="AvenirNext-DemiBoldItalic"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="promptPreviousSubject:" target="-2" id="M7y-gL-qcV"/>
+                    </connections>
                 </button>
                 <customView fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="t0R-Wm-T3r">
                     <rect key="frame" x="32" y="352" width="388" height="1"/>
