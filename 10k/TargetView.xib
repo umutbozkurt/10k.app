@@ -23,7 +23,7 @@
                     <rect key="frame" x="373" y="65" width="70" height="21"/>
                     <buttonCell key="cell" type="bevel" title="DEL" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="x84-U2-3DV">
                         <behavior key="behavior" lightByContents="YES"/>
-                        <font key="font" metaFont="system"/>
+                        <font key="font" size="18" name="AvenirNext-UltraLight"/>
                     </buttonCell>
                 </button>
             </subviews>

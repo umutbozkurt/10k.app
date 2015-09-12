@@ -31,7 +31,12 @@ class WelcomeViewController: NSViewController
     
     func shouldSubmit() -> Bool
     {
-        return self.targetViews?.count > 0
+        let hasTargetViews = self.targetViews?.count > 0
+        let targetViewsNotEmpty = self.targetViews!.reduce(true, combine: {(result, view: TargetView) in
+            return result && (!view.subjectTextField.stringValue.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()).isEmpty)
+        })
+        
+        return hasTargetViews && targetViewsNotEmpty
     }
 
     @IBAction func addTarget(sender: AnyObject)
@@ -52,6 +57,7 @@ class WelcomeViewController: NSViewController
         self.view.addSubview(targetView)
         targetView.removeButton.target = self
         targetView.removeButton.action = Selector("removeTargetView:")
+        targetView.subjectTextField.delegate = self
         self.targetViews?.append(targetView)
         self.arrangeTargetViews()
         self.addButton.enabled = self.shouldAddTarget()
@@ -95,9 +101,20 @@ class WelcomeViewController: NSViewController
     @IBAction func submit(sender: NSButton)
     {
         let subjectVC = SubjectAppsViewController(nibName: "SubjectAppsViewController", bundle: nil)
+        subjectVC?.subjects = self.targetViews!.map({(view: TargetView) -> String in
+            return view.subjectTextField.stringValue
+        })
         
         // switches view controllers
         let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
         appDelegate.popover.contentViewController = subjectVC
+    }
+}
+
+extension WelcomeViewController: NSTextFieldDelegate
+{
+    override func controlTextDidChange(obj: NSNotification)
+    {
+        self.doneButton.enabled = self.shouldSubmit()
     }
 }

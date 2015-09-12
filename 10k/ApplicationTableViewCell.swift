@@ -16,8 +16,4 @@ class ApplicationTableViewCell: NSTableCellView
     {
         self.applicationLabel.stringValue = application
     }
-    
-    override func prepareForReuse() {
-        println("reuse")
-    }
 }

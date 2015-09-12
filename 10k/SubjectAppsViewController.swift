@@ -10,16 +10,25 @@ import Cocoa
 
 class SubjectAppsViewController: NSViewController
 {
+    @IBOutlet var titleLabel: NSTextField!
     @IBOutlet var applicationsTableView: NSTableView!
+    @IBOutlet var currentSubjectLabel: NSTextField!
+    @IBOutlet var seperator: NSView!
+    
     var applications: Array<String> = []
+    var subjects: Array<String> = []
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        self.applications = self.fetchApplications()
+        self.applications = Array(Set(self.fetchApplications())).sorted{ $0 < $1 }  // Aplhabetically order unique objects
         self.applicationsTableView.intercellSpacing = CGSizeZero
         self.applicationsTableView.setDelegate(self)
         self.applicationsTableView.setDataSource(self)
+        self.currentSubjectLabel.stringValue = self.subjects.first!
+
+        self.seperator.wantsLayer = true
+        self.seperator.layer?.backgroundColor = NSColor.labelColor().CGColor
     }
     
     func fetchApplications() -> Array<String>
@@ -28,12 +37,9 @@ class SubjectAppsViewController: NSViewController
         
         let paths = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.ApplicationDirectory, NSSearchPathDomainMask.LocalDomainMask, true)
         let applicationsURL = NSURL(fileURLWithPath: paths.first as! String)
-        
         let dirEnumerator = fileManager.enumeratorAtURL(applicationsURL!, includingPropertiesForKeys: [NSURLNameKey], options:NSDirectoryEnumerationOptions.SkipsPackageDescendants, errorHandler: nil)!
         
-        let applicationURLS = dirEnumerator.allObjects
-        
-        return applicationURLS.map({(appURL) -> String in
+        return dirEnumerator.allObjects.map({(appURL) -> String in
             var fileName: AnyObject?
             var error: NSError?
             appURL.getResourceValue(&fileName, forKey: NSURLNameKey, error: &error)
