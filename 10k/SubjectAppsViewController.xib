@@ -23,7 +23,7 @@
             <subviews>
                 <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="22" horizontalPageScroll="10" verticalLineScroll="22" verticalPageScroll="10" hasHorizontalScroller="NO" usesPredominantAxisScrolling="NO" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="LMC-TF-acx">
                     <rect key="frame" x="0.0" y="0.0" width="450" height="352"/>
-                    <clipView key="contentView" misplaced="YES" drawsBackground="NO" copiesOnScroll="NO" id="9Jl-dn-vdo">
+                    <clipView key="contentView" misplaced="YES" copiesOnScroll="NO" id="9Jl-dn-vdo">
                         <rect key="frame" x="1" y="17" width="238" height="117"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -99,7 +99,7 @@
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xLo-Nt-bUT">
                     <rect key="frame" x="370" y="360" width="60" height="39"/>
                     <buttonCell key="cell" type="bevel" title="Next" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="j5L-kc-JGW">
-                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <behavior key="behavior" lightByContents="YES"/>
                         <font key="font" size="16" name="AvenirNext-DemiBoldItalic"/>
                     </buttonCell>
                     <connections>

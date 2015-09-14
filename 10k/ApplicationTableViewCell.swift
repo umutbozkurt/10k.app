@@ -11,9 +11,11 @@ import Cocoa
 class ApplicationTableViewCell: NSTableCellView
 {
     @IBOutlet var applicationLabel: NSTextField!
+    @IBOutlet var icon: NSImageView!
     
-    func setApplication(application: String)
+    func setApplication(name: String, icon: NSImage)
     {
-        self.applicationLabel.stringValue = application
+        self.applicationLabel.stringValue = name
+        self.icon.image = icon
     }
 }

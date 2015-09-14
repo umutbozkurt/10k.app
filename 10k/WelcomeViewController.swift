@@ -111,6 +111,8 @@ class WelcomeViewController: NSViewController
     }
 }
 
+// MARK: TextField Delegate
+
 extension WelcomeViewController: NSTextFieldDelegate
 {
     override func controlTextDidChange(obj: NSNotification)
