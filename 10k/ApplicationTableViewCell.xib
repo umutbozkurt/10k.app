@@ -12,10 +12,10 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="LaC-pL-yXy">
-                    <rect key="frame" x="176" y="0.0" width="99" height="30"/>
+                    <rect key="frame" x="-2" y="0.0" width="454" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="VVe-ev-hFT"/>
-                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="95" id="p3s-W8-zFR"/>
+                        <constraint firstAttribute="width" constant="450" id="p3s-W8-zFR"/>
                     </constraints>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="Application" id="Trh-Oa-qUS">
                         <font key="font" size="17" name="AvenirNext-Medium"/>
@@ -24,7 +24,7 @@
                     </textFieldCell>
                 </textField>
                 <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Prf-v1-G3L">
-                    <rect key="frame" x="140" y="0.0" width="30" height="30"/>
+                    <rect key="frame" x="210" y="0.0" width="30" height="30"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="30" id="2OS-AV-q0S"/>
                         <constraint firstAttribute="width" constant="30" id="sMH-Gc-mrN"/>
@@ -35,13 +35,14 @@
             <constraints>
                 <constraint firstAttribute="centerX" secondItem="LaC-pL-yXy" secondAttribute="centerX" id="2kL-0R-pbz"/>
                 <constraint firstAttribute="centerY" secondItem="LaC-pL-yXy" secondAttribute="centerY" id="5Wd-Dx-KwG"/>
-                <constraint firstItem="LaC-pL-yXy" firstAttribute="leading" secondItem="Prf-v1-G3L" secondAttribute="trailing" constant="8" id="cPo-pd-eH5"/>
+                <constraint firstAttribute="centerX" secondItem="Prf-v1-G3L" secondAttribute="centerX" id="NWw-Lq-7B7"/>
                 <constraint firstItem="Prf-v1-G3L" firstAttribute="top" secondItem="c22-O7-iKe" secondAttribute="top" id="nXo-Ci-zlK"/>
                 <constraint firstAttribute="bottom" secondItem="Prf-v1-G3L" secondAttribute="bottom" id="zUK-H0-xJk"/>
             </constraints>
             <connections>
                 <outlet property="applicationLabel" destination="LaC-pL-yXy" id="KPJ-zd-J6N"/>
                 <outlet property="icon" destination="Prf-v1-G3L" id="1vF-8r-00f"/>
+                <outlet property="iconCenterXConstraint" destination="NWw-Lq-7B7" id="zM0-NP-qFP"/>
             </connections>
         </customView>
     </objects>

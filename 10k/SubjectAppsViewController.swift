@@ -31,7 +31,7 @@ class SubjectAppsViewController: NSViewController
         self.applicationsTableView.intercellSpacing = CGSizeZero
         self.applicationsTableView.setDelegate(self)
         self.applicationsTableView.setDataSource(self)
-
+        
         self.currentSubjectLabel.stringValue = self.subjects.first!
         
         self.seperator.wantsLayer = true
@@ -140,7 +140,7 @@ extension SubjectAppsViewController: NSTableViewDelegate, NSTableViewDataSource
         }).first as! ApplicationTableViewCell
         
         appCell.setApplication(self.applications[row].name, icon: self.applications[row].icon)
-        
+
         return appCell
     }
     
