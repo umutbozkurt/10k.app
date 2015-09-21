@@ -14,5 +14,5 @@ class Record: Object
     dynamic var subject: Subject?
     dynamic var application: Application?
     dynamic var startedAt: NSDate = NSDate()
-    dynamic var endedAt: NSDate?
+    dynamic var endedAt: NSDate = NSDate()
 }
