@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import RealmSwift
 
 
 @NSApplicationMain
@@ -35,6 +36,20 @@ class AppDelegate: NSObject, NSApplicationDelegate
         }
         
         self.popover.contentViewController = WelcomeViewController(nibName:"WelcomeViewController", bundle:nil)
+        
+        let config = Realm.Configuration(
+            schemaVersion: 1,
+            
+            migrationBlock: { migration, oldSchemaVersion in
+            
+        })
+        
+        Realm.Configuration.defaultConfiguration = config
+        let realm = Realm()
+        
+        realm.write {
+            realm.deleteAll()
+        }
     }
     
     func applicationWillTerminate(aNotification: NSNotification)

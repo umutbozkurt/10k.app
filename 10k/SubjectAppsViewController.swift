@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import RealmSwift
 
 class SubjectAppsViewController: NSViewController
 {
@@ -26,7 +27,6 @@ class SubjectAppsViewController: NSViewController
     {
         super.viewDidLoad()
         self.applications = self.fetchApplications()
-//        self.applications = Array(Set(self.fetchApplications())).sorted{ $0 < $1 }  // Aplhabetically order unique objects
         
         self.applicationsTableView.intercellSpacing = CGSizeZero
         self.applicationsTableView.setDelegate(self)
@@ -105,8 +105,40 @@ class SubjectAppsViewController: NSViewController
     
     func submit(sender: NSButton)
     {
+        let realm = Realm()
+        
+        for (subject, applications) in self.subjectApplicationMap
+        {
+            realm.write({
+                var sub = realm.objects(Subject).filter("name == %@", subject).first
+                
+                if (sub == nil)
+                {
+                    sub = Subject()
+                    sub!.name = subject
+                }
+                
+                sub!.applications.extend(applications.map({(application) -> Application in
+                    if let app = realm.objects(Application).filter("name == %@", application).first
+                    {
+                        return app
+                    }
+                    else
+                    {
+                        let app = Application()
+                        app.name = application
+                        realm.add(app, update: false)
+                        return app
+                    }
+                }).filter({(application) -> Bool in
+                    return sub!.applications.indexOf(application) == nil
+                }))
+                    
+                realm.add(sub!, update: false)
+            })
+        }
+        
         let trackerVC = TrackerViewController(nibName: "TrackerViewController", bundle: nil)
-        trackerVC?.subjectApplicationMap = self.subjectApplicationMap
         
         // switches view controllers
         let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
@@ -118,12 +150,6 @@ class SubjectAppsViewController: NSViewController
 
 extension SubjectAppsViewController: NSTableViewDelegate, NSTableViewDataSource
 {
-    override func mouseMoved(theEvent: NSEvent)
-    {
-        
-        println(theEvent)
-    }
-    
     func numberOfRowsInTableView(tableView: NSTableView) -> Int
     {
         return self.applications.count

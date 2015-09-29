@@ -11,10 +11,17 @@ import RealmSwift
 
 class Subject: Object
 {
+    dynamic var id: String = NSUUID().UUIDString
     dynamic var name = ""
     let applications = List<Application>()
     
-    var records: Array<Record> {
+    override static func primaryKey() -> String?
+    {
+        return "id"
+    }
+    
+    var records: Array<Record>
+    {
         return linkingObjects(Record.self, forProperty: "subject")
     }
 }

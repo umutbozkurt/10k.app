@@ -11,5 +11,11 @@ import RealmSwift
 
 class Application: Object
 {
+    dynamic var id: String = NSUUID().UUIDString
     dynamic var name = ""
+    
+    override static func primaryKey() -> String?
+    {
+        return "id"
+    }
 }

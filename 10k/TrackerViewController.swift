@@ -11,34 +11,39 @@ import RealmSwift
 
 class TrackerViewController: NSViewController
 {
-    var subjectApplicationMap = Dictionary<String, Array<String>>()
+    var subjects = Array<Subject>()
+    var timer: NSTimer?
     
     override func viewDidLoad()
     {
         super.viewDidLoad()
+        let realm = Realm()
+        self.subjects = Array(realm.objects(Subject))
         
-        for (subject, applications) in self.subjectApplicationMap
-        {
-            let realm = Realm()
-            realm.write({
-                let sub = Subject()
-                sub.name = subject
-                sub.applications.extend(applications.map({(application) -> Application in
-                    if let app = realm.objects(Application).filter("name == '\(application)'").first
-                    {
-                        return app
-                    }
-                    else
-                    {
-                        let app = Application()
-                        app.name = application
-                        realm.add(app, update: false)
-                        return app
-                    }
-                }))
-                realm.add(sub, update: false)
-            })
-        }
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("track"), userInfo: nil, repeats: true)
     }
     
+    func track()
+    {
+        let application = self.getFrontmostApplication()
+        
+        let subjects = self.subjects.filter { (subject) -> Bool in
+            return subject.applications.indexOf("self.name == %@", application) != nil
+        }
+        
+        NSLog("APPLICATION: %@", application)
+        NSLog("SUBJECTS: %@", subjects)
+    }
+    
+    func getFrontmostApplication() -> String
+    {
+        let scriptPath = NSBundle.mainBundle().pathForResource("getActiveApplication", ofType: "scpt")
+        let scriptURL = NSURL(fileURLWithPath: scriptPath!)
+
+        var errorDict: NSDictionary?
+        let script = NSAppleScript(contentsOfURL: scriptURL!, error: &errorDict)
+        
+        let result = script!.executeAndReturnError(&errorDict)?.stringValue
+        return result!
+    }
 }
