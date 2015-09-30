@@ -92,6 +92,23 @@ class TrackerViewController: NSViewController
         let result = script!.executeAndReturnError(&errorDict)?.stringValue
         return result!
     }
+    
+    @IBAction func quit(sender: AnyObject)
+    {
+        NSApplication.sharedApplication().terminate(sender)
+    }
+    
+    @IBAction func updateApplications(sender: AnyObject)
+    {
+//        let subjectVC = SubjectAppsViewController(nibName: "SubjectAppsViewController", bundle: nil)
+//        subjectVC?.subjects = self.targetViews!.map({(view: TargetView) -> String in
+//            return view.subjectTextField.stringValue
+//        })
+//        
+//        // switches view controllers
+//        let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+//        appDelegate.popover.contentViewController = subjectVC
+    }
 }
 
 // MARK: Table View Data Source & Delegate

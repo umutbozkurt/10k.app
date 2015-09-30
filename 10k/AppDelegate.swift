@@ -35,7 +35,15 @@ class AppDelegate: NSObject, NSApplicationDelegate
             }
         }
         
-        if (NSUserDefaults.standardUserDefaults().objectForKey("init") == nil)
+        let config = Realm.Configuration(
+            schemaVersion: 1,
+            
+            migrationBlock: { migration, oldSchemaVersion in
+                
+        })
+        Realm.Configuration.defaultConfiguration = config
+        
+        if (Realm().objects(Subject).count == 0)
         {
             self.popover.contentViewController = WelcomeViewController(nibName:"WelcomeViewController", bundle:nil)
         }
@@ -43,20 +51,6 @@ class AppDelegate: NSObject, NSApplicationDelegate
         {
             self.popover.contentViewController = TrackerViewController(nibName:"TrackerViewController", bundle:nil)
         }
-        
-        let config = Realm.Configuration(
-            schemaVersion: 1,
-            
-            migrationBlock: { migration, oldSchemaVersion in
-            
-        })
-        
-        Realm.Configuration.defaultConfiguration = config
-//        let realm = Realm()
-//        
-//        realm.write {
-//            realm.deleteAll()
-//        }
     }
     
     func applicationWillTerminate(aNotification: NSNotification)

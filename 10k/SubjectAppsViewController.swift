@@ -116,6 +116,11 @@ class SubjectAppsViewController: NSViewController
                 {
                     sub = Subject()
                     sub!.name = subject.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                    realm.add(sub!, update: false)
+                }
+                else
+                {
+                    realm.add(sub!, update: true)
                 }
                 
                 sub!.applications.extend(applications.map({(application) -> Application in
@@ -134,7 +139,7 @@ class SubjectAppsViewController: NSViewController
                     return sub!.applications.indexOf(application) == nil
                 }))
                     
-                realm.add(sub!, update: false)
+                
             })
         }
         

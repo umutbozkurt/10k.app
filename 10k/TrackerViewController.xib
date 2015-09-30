@@ -23,7 +23,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="B6s-lx-XDA">
-                                <rect key="frame" x="0.0" y="0.0" width="447" height="0.0"/>
+                                <rect key="frame" x="0.0" y="0.0" width="450" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
@@ -79,13 +79,29 @@
                     </scroller>
                 </scrollView>
                 <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dkR-f7-Lhp">
-                    <rect key="frame" x="392" y="260" width="38" height="32"/>
+                    <rect key="frame" x="392" y="256" width="38" height="32"/>
                     <buttonCell key="cell" type="bevel" title="APPS" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="p6i-TH-B9Z">
                         <behavior key="behavior" lightByContents="YES"/>
                         <font key="font" size="14" name="AvenirNext-Regular"/>
                     </buttonCell>
+                    <connections>
+                        <action selector="updateApplications:" target="-2" id="kJf-3L-TMa"/>
+                    </connections>
+                </button>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Pyg-Bw-JMY">
+                    <rect key="frame" x="20" y="264" width="16" height="16"/>
+                    <buttonCell key="cell" type="bevel" bezelStyle="rounded" image="quit" imagePosition="only" alignment="center" imageScaling="proportionallyDown" inset="2" id="PxN-MH-tp3">
+                        <behavior key="behavior" lightByContents="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="quit:" target="-2" id="28H-xw-eOg"/>
+                    </connections>
                 </button>
             </subviews>
         </customView>
     </objects>
+    <resources>
+        <image name="quit" width="29" height="32"/>
+    </resources>
 </document>
