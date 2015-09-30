@@ -22,6 +22,8 @@
 		2C6E32331B98E557008E7C44 /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C6E32311B98E557008E7C44 /* WelcomeViewController.swift */; };
 		2C6E32341B98E557008E7C44 /* WelcomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C6E32321B98E557008E7C44 /* WelcomeViewController.xib */; };
 		2C883DF01BBAF5240062E277 /* getActiveApplication.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 2C883DEF1BBAF5240062E277 /* getActiveApplication.scpt */; };
+		2C883DF61BBB294D0062E277 /* RecordTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2C883DF51BBB294D0062E277 /* RecordTableViewCell.xib */; };
+		2C883DF81BBB29640062E277 /* RecordTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C883DF71BBB29640062E277 /* RecordTableViewCell.swift */; };
 		2CA2C9D11B9B16C700A39B93 /* TargetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA2C9D01B9B16C700A39B93 /* TargetView.swift */; };
 		2CA2C9D31B9B18FA00A39B93 /* TargetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CA2C9D21B9B18FA00A39B93 /* TargetView.xib */; };
 		2CA2C9DA1B9C331D00A39B93 /* SubjectAppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA2C9D81B9C331D00A39B93 /* SubjectAppsViewController.swift */; };
@@ -60,6 +62,8 @@
 		2C6E32311B98E557008E7C44 /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		2C6E32321B98E557008E7C44 /* WelcomeViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = WelcomeViewController.xib; sourceTree = "<group>"; };
 		2C883DEF1BBAF5240062E277 /* getActiveApplication.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = getActiveApplication.scpt; sourceTree = "<group>"; };
+		2C883DF51BBB294D0062E277 /* RecordTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RecordTableViewCell.xib; sourceTree = "<group>"; };
+		2C883DF71BBB29640062E277 /* RecordTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecordTableViewCell.swift; sourceTree = "<group>"; };
 		2CA2C9D01B9B16C700A39B93 /* TargetView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TargetView.swift; sourceTree = "<group>"; };
 		2CA2C9D21B9B18FA00A39B93 /* TargetView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TargetView.xib; sourceTree = "<group>"; };
 		2CA2C9D81B9C331D00A39B93 /* SubjectAppsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SubjectAppsViewController.swift; sourceTree = "<group>"; };
@@ -206,6 +210,8 @@
 				2CA2C9D21B9B18FA00A39B93 /* TargetView.xib */,
 				2C1235891B9CEA4600AED258 /* ApplicationTableViewCell.swift */,
 				2C12358B1B9CEA6300AED258 /* ApplicationTableViewCell.xib */,
+				2C883DF51BBB294D0062E277 /* RecordTableViewCell.xib */,
+				2C883DF71BBB29640062E277 /* RecordTableViewCell.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -316,6 +322,7 @@
 				2C6E32171B98E51C008E7C44 /* MainMenu.xib in Resources */,
 				2C12358C1B9CEA6300AED258 /* ApplicationTableViewCell.xib in Resources */,
 				2C6E32341B98E557008E7C44 /* WelcomeViewController.xib in Resources */,
+				2C883DF61BBB294D0062E277 /* RecordTableViewCell.xib in Resources */,
 				2CA2C9D31B9B18FA00A39B93 /* TargetView.xib in Resources */,
 				2C2F17AD1BA5ACA000104967 /* TrackerViewController.xib in Resources */,
 				2CA2C9DB1B9C331D00A39B93 /* SubjectAppsViewController.xib in Resources */,
@@ -394,6 +401,7 @@
 				2C6E322F1B98E540008E7C44 /* EventMonitor.swift in Sources */,
 				2C2F17AC1BA5ACA000104967 /* TrackerViewController.swift in Sources */,
 				2CA2C9D11B9B16C700A39B93 /* TargetView.swift in Sources */,
+				2C883DF81BBB29640062E277 /* RecordTableViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

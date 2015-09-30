@@ -115,7 +115,7 @@ class SubjectAppsViewController: NSViewController
                 if (sub == nil)
                 {
                     sub = Subject()
-                    sub!.name = subject
+                    sub!.name = subject.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
                 }
                 
                 sub!.applications.extend(applications.map({(application) -> Application in
@@ -126,7 +126,7 @@ class SubjectAppsViewController: NSViewController
                     else
                     {
                         let app = Application()
-                        app.name = application
+                        app.name = application.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
                         realm.add(app, update: false)
                         return app
                     }
@@ -139,6 +139,8 @@ class SubjectAppsViewController: NSViewController
         }
         
         let trackerVC = TrackerViewController(nibName: "TrackerViewController", bundle: nil)
+        
+        NSUserDefaults.standardUserDefaults().setValue(true, forKey: "init")
         
         // switches view controllers
         let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate

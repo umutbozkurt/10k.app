@@ -13,7 +13,6 @@ class Record: Object
 {
     dynamic var id: String = NSUUID().UUIDString
     dynamic var subject: Subject?
-    dynamic var application: Application?
     dynamic var startedAt: NSDate = NSDate()
     dynamic var endedAt: NSDate = NSDate()
     

@@ -23,7 +23,7 @@ class AppDelegate: NSObject, NSApplicationDelegate
     {
         if let button = self.statusItem.button
         {
-            button.image = NSImage(named: "cloud")
+            button.image = NSImage(named: "10k")
             button.action = Selector("togglePopover:")
         }
         
@@ -35,7 +35,14 @@ class AppDelegate: NSObject, NSApplicationDelegate
             }
         }
         
-        self.popover.contentViewController = WelcomeViewController(nibName:"WelcomeViewController", bundle:nil)
+        if (NSUserDefaults.standardUserDefaults().objectForKey("init") == nil)
+        {
+            self.popover.contentViewController = WelcomeViewController(nibName:"WelcomeViewController", bundle:nil)
+        }
+        else
+        {
+            self.popover.contentViewController = TrackerViewController(nibName:"TrackerViewController", bundle:nil)
+        }
         
         let config = Realm.Configuration(
             schemaVersion: 1,
@@ -45,11 +52,11 @@ class AppDelegate: NSObject, NSApplicationDelegate
         })
         
         Realm.Configuration.defaultConfiguration = config
-        let realm = Realm()
-        
-        realm.write {
-            realm.deleteAll()
-        }
+//        let realm = Realm()
+//        
+//        realm.write {
+//            realm.deleteAll()
+//        }
     }
     
     func applicationWillTerminate(aNotification: NSNotification)
