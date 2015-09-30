@@ -11,6 +11,9 @@ import RealmSwift
 
 class TrackerViewController: NSViewController
 {
+    static let cellHeight = 55
+    static let buttonHeight = 45
+    
     @IBOutlet var recordsTableView: NSTableView!
     
     var subjects = Array<Subject>()
@@ -24,7 +27,12 @@ class TrackerViewController: NSViewController
         let realm = Realm()
         self.subjects = Array(realm.objects(Subject))
         
-        self.view.frame = CGRectMake(CGFloat(0), CGFloat(0), self.view.bounds.width, CGFloat(self.subjects.count * 55))
+        self.view.frame = CGRectMake(
+            CGFloat(0),
+            CGFloat(0),
+            self.view.bounds.width,
+            CGFloat(self.subjects.count * TrackerViewController.cellHeight + TrackerViewController.buttonHeight)
+        )
         
         self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("track"), userInfo: nil, repeats: true)
     }
@@ -112,7 +120,7 @@ extension TrackerViewController: NSTableViewDelegate, NSTableViewDataSource
     
     func tableView(tableView: NSTableView, heightOfRow row: Int) -> CGFloat
     {
-        return 55
+        return CGFloat(TrackerViewController.cellHeight)
     }
     
     func tableView(tableView: NSTableView, shouldSelectRow row: Int) -> Bool

@@ -19,10 +19,10 @@
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
                 </textField>
-                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" setsMaxLayoutWidthAtFirstLayout="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Cr-Ua-EJE">
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1Cr-Ua-EJE">
                     <rect key="frame" x="20" y="0.0" width="261" height="55"/>
                     <textFieldCell key="cell" sendsActionOnEndEditing="YES" alignment="left" title="Subject" drawsBackground="YES" id="6xG-X2-Vza">
-                        <font key="font" size="27" name="AvenirNext-Bold"/>
+                        <font key="font" size="22" name="AvenirNext-Bold"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>
@@ -30,7 +30,7 @@
                 <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UEk-aY-LyJ">
                     <rect key="frame" x="280" y="0.0" width="150" height="55"/>
                     <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="right" title="000 hours" drawsBackground="YES" id="WZI-r3-Law">
-                        <font key="font" size="29" name="AvenirNext-DemiBoldItalic"/>
+                        <font key="font" size="23" name="AvenirNext-DemiBoldItalic"/>
                         <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                         <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                     </textFieldCell>

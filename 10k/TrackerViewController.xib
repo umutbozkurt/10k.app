@@ -17,18 +17,18 @@
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
             <subviews>
                 <scrollView fixedFrame="YES" borderType="none" autohidesScrollers="YES" horizontalLineScroll="17" horizontalPageScroll="10" verticalLineScroll="17" verticalPageScroll="10" hasHorizontalScroller="NO" hasVerticalScroller="NO" usesPredominantAxisScrolling="NO" horizontalScrollElasticity="none" verticalScrollElasticity="none" translatesAutoresizingMaskIntoConstraints="NO" id="nTs-jq-s9d">
-                    <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                    <rect key="frame" x="0.0" y="0.0" width="450" height="255"/>
                     <clipView key="contentView" misplaced="YES" drawsBackground="NO" copiesOnScroll="NO" id="bc5-Gz-Dag">
                         <rect key="frame" x="1" y="17" width="238" height="117"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" columnAutoresizingStyle="lastColumnOnly" columnReordering="NO" columnResizing="NO" multipleSelection="NO" autosaveColumns="NO" typeSelect="NO" rowSizeStyle="automatic" viewBased="YES" floatsGroupRows="NO" id="B6s-lx-XDA">
-                                <rect key="frame" x="0.0" y="0.0" width="238" height="117"/>
+                                <rect key="frame" x="0.0" y="0.0" width="447" height="0.0"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
                                 <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
                                 <tableColumns>
-                                    <tableColumn width="447" minWidth="40" maxWidth="1000" id="pvT-2V-fy8">
+                                    <tableColumn width="450" minWidth="40" maxWidth="1000" id="pvT-2V-fy8">
                                         <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border" alignment="left">
                                             <font key="font" metaFont="smallSystem"/>
                                             <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
@@ -78,6 +78,13 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </scroller>
                 </scrollView>
+                <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dkR-f7-Lhp">
+                    <rect key="frame" x="392" y="260" width="38" height="32"/>
+                    <buttonCell key="cell" type="bevel" title="APPS" bezelStyle="rounded" alignment="center" imageScaling="proportionallyDown" inset="2" id="p6i-TH-B9Z">
+                        <behavior key="behavior" lightByContents="YES"/>
+                        <font key="font" size="14" name="AvenirNext-Regular"/>
+                    </buttonCell>
+                </button>
             </subviews>
         </customView>
     </objects>

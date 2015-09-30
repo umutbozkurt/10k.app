@@ -28,7 +28,6 @@
 		2CA2C9D31B9B18FA00A39B93 /* TargetView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CA2C9D21B9B18FA00A39B93 /* TargetView.xib */; };
 		2CA2C9DA1B9C331D00A39B93 /* SubjectAppsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CA2C9D81B9C331D00A39B93 /* SubjectAppsViewController.swift */; };
 		2CA2C9DB1B9C331D00A39B93 /* SubjectAppsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2CA2C9D91B9C331D00A39B93 /* SubjectAppsViewController.xib */; };
-		DC131C84BE663A1CADE19798 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D1B58946B9815030CB22E81C /* Pods.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		EDD24E9990220FDBB7BCB2A0 /* Pods_10k.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 93E74576C2B352B702C12BDE /* Pods_10k.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 /* End PBXBuildFile section */
 
@@ -79,7 +78,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DC131C84BE663A1CADE19798 /* Pods.framework in Frameworks */,
 				EDD24E9990220FDBB7BCB2A0 /* Pods_10k.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
