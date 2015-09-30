@@ -35,6 +35,17 @@ class AppDelegate: NSObject, NSApplicationDelegate
             }
         }
         
+        // Run automatically at startup
+        let isStartupSet = NSUserDefaults.standardUserDefaults().boolForKey("isStartupSet")
+        if (!isStartupSet)
+        {
+            if (!LaunchStarter.applicationIsInStartUpItems())
+            {
+                LaunchStarter.toggleLaunchAtStartup()
+            }
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isStartupSet")
+        }
+        
         let config = Realm.Configuration(
             schemaVersion: 1,
             
