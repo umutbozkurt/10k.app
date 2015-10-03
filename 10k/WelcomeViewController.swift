@@ -8,6 +8,7 @@
 
 import Cocoa
 import SnapKit
+import RealmSwift
 
 
 class WelcomeViewController: NSViewController
@@ -101,8 +102,25 @@ class WelcomeViewController: NSViewController
     @IBAction func submit(sender: NSButton)
     {
         let subjectVC = SubjectAppsViewController(nibName: "SubjectAppsViewController", bundle: nil)
-        subjectVC?.subjects = self.targetViews!.map({(view: TargetView) -> String in
-            return view.subjectTextField.stringValue
+        subjectVC?.subjects = self.targetViews!.map({(view: TargetView) -> Subject in
+            
+            let realm = Realm()
+            var sub = realm.objects(Subject).filter("name == %@", view.subjectTextField.stringValue).first
+            
+            realm.write({
+                if (sub == nil)
+                {
+                    sub = Subject()
+                    sub!.name = view.subjectTextField.stringValue.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
+                    realm.add(sub!, update: false)
+                }
+                else
+                {
+                    realm.add(sub!, update: true)
+                }
+            })
+            
+            return sub!
         })
         
         // switches view controllers

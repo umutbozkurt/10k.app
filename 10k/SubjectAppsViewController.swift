@@ -20,8 +20,8 @@ class SubjectAppsViewController: NSViewController
     
     var eventMonitor: EventMonitor?
     var applications: Array<(name: String, icon: NSImage)> = []
-    var subjects: Array<String> = []
-    var subjectApplicationMap = Dictionary<String, Array<String>>()
+    var subjects: Array<Subject> = []
+    var subjectApplicationMap = Dictionary<Subject, Array<String>>()
     
     override func viewDidLoad()
     {
@@ -32,7 +32,7 @@ class SubjectAppsViewController: NSViewController
         self.applicationsTableView.setDelegate(self)
         self.applicationsTableView.setDataSource(self)
         
-        self.currentSubjectLabel.stringValue = self.subjects.first!
+        self.currentSubjectLabel.stringValue = self.subjects.first!.name
         
         self.seperator.wantsLayer = true
         self.seperator.layer?.backgroundColor = NSColor.labelColor().CGColor
@@ -63,6 +63,11 @@ class SubjectAppsViewController: NSViewController
         })
     }
     
+    func getCurrentSubjectIndex() -> Int
+    {
+        return (self.subjects as NSArray).indexOfObjectPassingTest{$0.0.name == self.currentSubjectLabel.stringValue}
+    }
+    
     func shouldPromptNextSubject() -> Bool
     {
         return self.applicationsTableView.selectedRowIndexes.count > 0
@@ -75,8 +80,8 @@ class SubjectAppsViewController: NSViewController
     
     @IBAction func promptNextSubject(sender: NSButton)
     {
-        let currentIndex = (self.subjects as NSArray).indexOfObject(self.currentSubjectLabel.stringValue)
-        self.currentSubjectLabel.stringValue = self.subjects[currentIndex + 1]
+        let currentIndex = self.getCurrentSubjectIndex()
+        self.currentSubjectLabel.stringValue = self.subjects[currentIndex + 1].name
         self.changeNextButton(currentIndex + 1)
         
         self.applicationsTableView.deselectAll(nil)
@@ -87,8 +92,8 @@ class SubjectAppsViewController: NSViewController
         self.nextButton.title = "Next"
         self.nextButton.action = Selector("promptNextSubject:")
         
-        let currentIndex = (self.subjects as NSArray).indexOfObject(self.currentSubjectLabel.stringValue)
-        self.currentSubjectLabel.stringValue = self.subjects[currentIndex - 1]
+        let currentIndex = self.getCurrentSubjectIndex()
+        self.currentSubjectLabel.stringValue = self.subjects[currentIndex - 1].name
         self.previousButton.enabled = self.shouldPromptPreviousSubject()
     }
     
@@ -110,20 +115,7 @@ class SubjectAppsViewController: NSViewController
         for (subject, applications) in self.subjectApplicationMap
         {
             realm.write({
-                var sub = realm.objects(Subject).filter("name == %@", subject).first
-                
-                if (sub == nil)
-                {
-                    sub = Subject()
-                    sub!.name = subject.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet())
-                    realm.add(sub!, update: false)
-                }
-                else
-                {
-                    realm.add(sub!, update: true)
-                }
-                
-                sub!.applications.extend(applications.map({(application) -> Application in
+                subject.applications.extend(applications.map({(application) -> Application in
                     if let app = realm.objects(Application).filter("name == %@", application).first
                     {
                         return app
@@ -136,10 +128,8 @@ class SubjectAppsViewController: NSViewController
                         return app
                     }
                 }).filter({(application) -> Bool in
-                    return sub!.applications.indexOf(application) == nil
+                    return subject.applications.indexOf(application) == nil
                 }))
-                    
-                
             })
         }
         
@@ -188,7 +178,9 @@ extension SubjectAppsViewController: NSTableViewDelegate, NSTableViewDataSource
         self.applicationsTableView.selectedRowIndexes.enumerateIndexesUsingBlock({(index, stop) -> Void in
             selectedApplications.append(self.applications[index].name)
         })
-        self.subjectApplicationMap[self.currentSubjectLabel.stringValue] = selectedApplications
+        
+        let currentSubject = self.subjects[self.getCurrentSubjectIndex()]
+        self.subjectApplicationMap[currentSubject] = selectedApplications
         
         self.nextButton.enabled = self.shouldPromptNextSubject()
     }
