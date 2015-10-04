@@ -14,11 +14,6 @@ class ApplicationTableViewCell: NSTableCellView
     @IBOutlet var icon: NSImageView!
     @IBOutlet var iconCenterXConstraint: NSLayoutConstraint!
     
-//    override func awakeFromNib()
-//    {
-////        println(applicationLabel.backgroundColor?.CGColor)
-//    }
-    
     func setApplication(name: String, icon: NSImage)
     {
         self.applicationLabel.stringValue = name

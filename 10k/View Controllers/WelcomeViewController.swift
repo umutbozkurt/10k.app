@@ -45,10 +45,10 @@ class WelcomeViewController: NSViewController
         var loadedViews: NSArray?
         NSBundle.mainBundle().loadNibNamed("TargetView", owner: nil, topLevelObjects: &loadedViews)
         // our view may not be firstItem of loadedViews
-        
-        var targetView = (loadedViews as! Array).filter({ view -> Bool in
+
+        let targetView = (loadedViews! as Array).filter({(view) -> Bool in
             return view.isKindOfClass(TargetView)
-        }).first! as TargetView
+        }).first as! TargetView
         
         self.view.addSubview(targetView)
         targetView.removeButton.target = self
