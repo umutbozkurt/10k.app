@@ -100,14 +100,12 @@ class TrackerViewController: NSViewController
     
     @IBAction func updateApplications(sender: AnyObject)
     {
-//        let subjectVC = SubjectAppsViewController(nibName: "SubjectAppsViewController", bundle: nil)
-//        subjectVC?.subjects = self.targetViews!.map({(view: TargetView) -> String in
-//            return view.subjectTextField.stringValue
-//        })
-//        
-//        // switches view controllers
-//        let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
-//        appDelegate.popover.contentViewController = subjectVC
+        let subjectVC = SubjectAppsViewController(nibName: "SubjectAppsViewController", bundle: nil)
+        subjectVC?.subjects = self.subjects
+        
+        // switches view controllers
+        let appDelegate = NSApplication.sharedApplication().delegate as! AppDelegate
+        appDelegate.popover.contentViewController = subjectVC
     }
 }
 

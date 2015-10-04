@@ -38,6 +38,7 @@ class SubjectAppsViewController: NSViewController
         self.seperator.layer?.backgroundColor = NSColor.labelColor().CGColor
         
         self.changeNextButton(0)
+        self.selectApplicationsForSubjectIndex(0)
         self.previousButton.enabled = self.shouldPromptPreviousSubject()
     }
     
@@ -78,13 +79,28 @@ class SubjectAppsViewController: NSViewController
         return (self.subjects as NSArray).indexOfObject(self.currentSubjectLabel.stringValue) > 0
     }
     
+    func selectApplicationsForSubjectIndex(index: Int)
+    {
+        let indexes = NSMutableIndexSet()
+        
+        for application in self.subjects[index].applications
+        {
+            let i = (self.applications.map({ (app) -> String in
+                return app.name
+            }) as NSArray).indexOfObject(application.name)
+            indexes.addIndex(i)
+        }
+        
+        self.applicationsTableView.selectRowIndexes(indexes, byExtendingSelection: false)
+    }
+    
     @IBAction func promptNextSubject(sender: NSButton)
     {
         let currentIndex = self.getCurrentSubjectIndex()
         self.currentSubjectLabel.stringValue = self.subjects[currentIndex + 1].name
         self.changeNextButton(currentIndex + 1)
         
-        self.applicationsTableView.deselectAll(nil)
+        self.selectApplicationsForSubjectIndex(currentIndex)
     }
     
     @IBAction func promptPreviousSubject(sender: NSButton)
@@ -95,6 +111,8 @@ class SubjectAppsViewController: NSViewController
         let currentIndex = self.getCurrentSubjectIndex()
         self.currentSubjectLabel.stringValue = self.subjects[currentIndex - 1].name
         self.previousButton.enabled = self.shouldPromptPreviousSubject()
+        
+        self.selectApplicationsForSubjectIndex(currentIndex)
     }
     
     func changeNextButton(forIndex: Int)
