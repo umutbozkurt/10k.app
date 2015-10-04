@@ -76,7 +76,7 @@ class SubjectAppsViewController: NSViewController
     
     func shouldPromptPreviousSubject() -> Bool
     {
-        return (self.subjects as NSArray).indexOfObject(self.currentSubjectLabel.stringValue) > 0
+        return (self.subjects as NSArray).indexOfObjectPassingTest{$0.0.name == self.currentSubjectLabel.stringValue} > 0
     }
     
     func selectApplicationsForSubjectIndex(index: Int)
