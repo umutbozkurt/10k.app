@@ -97,11 +97,11 @@
 		2C2F17AE1BA7140600104967 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				2C2F17AF1BA7162B00104967 /* Subject.swift */,
 				2C2F17B11BA7174F00104967 /* Application.swift */,
 				2C2F17B31BA717DC00104967 /* Record.swift */,
+				2C2F17AF1BA7162B00104967 /* Subject.swift */,
 			);
-			name = Models;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		2C6E32031B98E51C008E7C44 = {
@@ -109,9 +109,9 @@
 			children = (
 				2C6E320E1B98E51C008E7C44 /* 10k */,
 				2C6E321F1B98E51C008E7C44 /* 10kTests */,
-				2C6E320D1B98E51C008E7C44 /* Products */,
 				7CA87E6952AFC126D7C72FE7 /* Frameworks */,
 				4E2BE1522DE9C94BCAE58FE4 /* Pods */,
+				2C6E320D1B98E51C008E7C44 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
@@ -127,15 +127,15 @@
 		2C6E320E1B98E51C008E7C44 /* 10k */ = {
 			isa = PBXGroup;
 			children = (
-				2C883DEE1BBAF4F80062E277 /* Scripts */,
-				2C2F17AE1BA7140600104967 /* Models */,
-				2CA2C9CF1B9B164700A39B93 /* Views */,
-				2C6E32301B98E54A008E7C44 /* View Controllers */,
-				2C6E322D1B98E531008E7C44 /* Utility */,
 				2C6E322C1B98E529008E7C44 /* Delegates */,
+				2C2F17AE1BA7140600104967 /* Models */,
+				2C883DEE1BBAF4F80062E277 /* Scripts */,
+				2C6E320F1B98E51C008E7C44 /* Supporting Files */,
+				2C6E322D1B98E531008E7C44 /* Utility */,
+				2C6E32301B98E54A008E7C44 /* View Controllers */,
+				2CA2C9CF1B9B164700A39B93 /* Views */,
 				2C6E32131B98E51C008E7C44 /* Images.xcassets */,
 				2C6E32151B98E51C008E7C44 /* MainMenu.xib */,
-				2C6E320F1B98E51C008E7C44 /* Supporting Files */,
 			);
 			path = 10k;
 			sourceTree = "<group>";
@@ -145,14 +145,14 @@
 			children = (
 				2C6E32101B98E51C008E7C44 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		2C6E321F1B98E51C008E7C44 /* 10kTests */ = {
 			isa = PBXGroup;
 			children = (
-				2C6E32221B98E51C008E7C44 /* _0kTests.swift */,
 				2C6E32201B98E51C008E7C44 /* Supporting Files */,
+				2C6E32221B98E51C008E7C44 /* _0kTests.swift */,
 			);
 			path = 10kTests;
 			sourceTree = "<group>";
@@ -162,7 +162,7 @@
 			children = (
 				2C6E32211B98E51C008E7C44 /* Info.plist */,
 			);
-			name = "Supporting Files";
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		2C6E322C1B98E529008E7C44 /* Delegates */ = {
@@ -170,29 +170,29 @@
 			children = (
 				2C6E32111B98E51C008E7C44 /* AppDelegate.swift */,
 			);
-			name = Delegates;
+			path = Delegates;
 			sourceTree = "<group>";
 		};
 		2C6E322D1B98E531008E7C44 /* Utility */ = {
 			isa = PBXGroup;
 			children = (
-				2C1A195F1BBC46F70074BC44 /* LaunchStarter.swift */,
 				2C6E322E1B98E540008E7C44 /* EventMonitor.swift */,
+				2C1A195F1BBC46F70074BC44 /* LaunchStarter.swift */,
 			);
-			name = Utility;
+			path = Utility;
 			sourceTree = "<group>";
 		};
 		2C6E32301B98E54A008E7C44 /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				2C6E32311B98E557008E7C44 /* WelcomeViewController.swift */,
-				2C6E32321B98E557008E7C44 /* WelcomeViewController.xib */,
 				2CA2C9D81B9C331D00A39B93 /* SubjectAppsViewController.swift */,
 				2CA2C9D91B9C331D00A39B93 /* SubjectAppsViewController.xib */,
 				2C2F17AA1BA5ACA000104967 /* TrackerViewController.swift */,
 				2C2F17AB1BA5ACA000104967 /* TrackerViewController.xib */,
+				2C6E32311B98E557008E7C44 /* WelcomeViewController.swift */,
+				2C6E32321B98E557008E7C44 /* WelcomeViewController.xib */,
 			);
-			name = "View Controllers";
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		2C883DEE1BBAF4F80062E277 /* Scripts */ = {
@@ -200,21 +200,20 @@
 			children = (
 				2C883DEF1BBAF5240062E277 /* getActiveApplication.scpt */,
 			);
-			name = Scripts;
-			path = ..;
+			path = Scripts;
 			sourceTree = "<group>";
 		};
 		2CA2C9CF1B9B164700A39B93 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				2CA2C9D01B9B16C700A39B93 /* TargetView.swift */,
-				2CA2C9D21B9B18FA00A39B93 /* TargetView.xib */,
 				2C1235891B9CEA4600AED258 /* ApplicationTableViewCell.swift */,
 				2C12358B1B9CEA6300AED258 /* ApplicationTableViewCell.xib */,
-				2C883DF51BBB294D0062E277 /* RecordTableViewCell.xib */,
 				2C883DF71BBB29640062E277 /* RecordTableViewCell.swift */,
+				2C883DF51BBB294D0062E277 /* RecordTableViewCell.xib */,
+				2CA2C9D01B9B16C700A39B93 /* TargetView.swift */,
+				2CA2C9D21B9B18FA00A39B93 /* TargetView.xib */,
 			);
-			name = Views;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		4E2BE1522DE9C94BCAE58FE4 /* Pods */ = {
@@ -432,6 +431,7 @@
 				2C6E32161B98E51C008E7C44 /* Base */,
 			);
 			name = MainMenu.xib;
+			path = .;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -523,7 +523,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = 10k/Info.plist;
+				INFOPLIST_FILE = "10k/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -535,7 +535,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				COMBINE_HIDPI_IMAGES = YES;
-				INFOPLIST_FILE = 10k/Info.plist;
+				INFOPLIST_FILE = "10k/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -554,7 +554,7 @@
 					"DEBUG=1",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = 10kTests/Info.plist;
+				INFOPLIST_FILE = "10kTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/10k.app/Contents/MacOS/10k";
@@ -570,7 +570,7 @@
 					"$(DEVELOPER_FRAMEWORKS_DIR)",
 					"$(inherited)",
 				);
-				INFOPLIST_FILE = 10kTests/Info.plist;
+				INFOPLIST_FILE = "10kTests/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/10k.app/Contents/MacOS/10k";
