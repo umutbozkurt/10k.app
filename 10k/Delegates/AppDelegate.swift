@@ -54,6 +54,10 @@ class AppDelegate: NSObject, NSApplicationDelegate
         })
         Realm.Configuration.defaultConfiguration = config
         
+        Realm().write { () -> Void in
+            Realm().deleteAll()
+        }
+        
         if (Realm().objects(Subject).count == 0)
         {
             self.popover.contentViewController = WelcomeViewController(nibName:"WelcomeViewController", bundle:nil)
@@ -93,6 +97,49 @@ class AppDelegate: NSObject, NSApplicationDelegate
         else
         {
             self.showPopover(sender)
+        }
+    }
+}
+
+// MARK: NSUserNotificationCenter Delegate Methods
+
+extension AppDelegate: NSUserNotificationCenterDelegate
+{
+    func userNotificationCenter(center: NSUserNotificationCenter, shouldPresentNotification notification: NSUserNotification) -> Bool
+    {
+        return true
+    }
+    
+    func userNotificationCenter(center: NSUserNotificationCenter, didActivateNotification notification: NSUserNotification)
+    {
+        if (notification.activationType == NSUserNotificationActivationType.ActionButtonClicked)
+        {
+            let subjects = notification.valueForKey("_alternateActionButtonTitles") as! NSArray
+            let index = notification.valueForKey("_alternateActionIndex") as! Int
+            
+            // There will be multiple Records on userInfo, delete irrelevant ones and save current subject's Record
+            let realm = Realm()
+            
+            realm.write{
+                let payload = notification.userInfo as! Dictionary<String, Array<String>>
+                for recordId in payload["recordIDs"]!
+                {
+                    let record = realm.objectForPrimaryKey(Record.self, key: recordId)!
+                    let relevant = record.subject!.name == (subjects[index] as! String)
+                    
+                    if (relevant)
+                    {
+                        record.endedAt = NSDate()
+                        realm.add(record, update: true)
+                        
+                        NSLog("FLUSH DB")
+                    }
+                    else
+                    {
+                        realm.delete(record)
+                    }
+                }
+            }
         }
     }
 }

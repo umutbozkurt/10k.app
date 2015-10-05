@@ -21,11 +21,23 @@ class TrackerViewController: NSViewController
     var timer: NSTimer?
     let scriptPath = NSBundle.mainBundle().pathForResource("getActiveApplication", ofType: "scpt")
     
+    override init?(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?)
+    {
+        super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
+        let realm = Realm()
+        self.subjects = Array(realm.objects(Subject))
+        
+        self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("track"), userInfo: nil, repeats: true)
+    }
+
+    required init?(coder: NSCoder)
+    {
+        super.init(coder: coder)
+    }
+    
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        let realm = Realm()
-        self.subjects = Array(realm.objects(Subject))
         
         self.view.frame = CGRectMake(
             CGFloat(0),
@@ -33,8 +45,6 @@ class TrackerViewController: NSViewController
             self.view.bounds.width,
             CGFloat(self.subjects.count * TrackerViewController.cellHeight + TrackerViewController.buttonHeight)
         )
-        
-        self.timer = NSTimer.scheduledTimerWithTimeInterval(1.0, target: self, selector: Selector("track"), userInfo: nil, repeats: true)
     }
     
     override func viewWillAppear()
@@ -47,10 +57,10 @@ class TrackerViewController: NSViewController
     {
         let application = self.getFrontmostApplication()
         
-        let subjects = self.subjects.filter { (subject) -> Bool in
+        var subjects = self.subjects.filter { (subject) -> Bool in
             return subject.applications.indexOf("self.name == %@", application) != nil
         }
-        
+    
         let realm = Realm()
         realm.write {
             let olderSet = Set(self.activeRecords)
@@ -71,13 +81,45 @@ class TrackerViewController: NSViewController
             })
             
             let activeSet = Set(self.activeRecords)
-            let finishedRecords = olderSet.subtract(activeSet)
+            var finishedRecords = olderSet.subtract(activeSet)
             
-            for record: Record in finishedRecords
+            if (olderSet.count > 1 && finishedRecords.count > 0)
             {
-                record.endedAt = NSDate()
-                realm.add(record, update: true)
-                NSLog("FLUSH DB")
+                let matchedSubjects = Array(olderSet).map({ (record) -> String in
+                    return record.subject!.name
+                })
+                
+                let notification = NSUserNotification()
+                notification.title = "Choose Subject for \(application)"
+                notification.informativeText = "What did you work on?"
+                notification.deliveryDate = NSDate(timeInterval: 1, sinceDate: NSDate())
+                notification.hasActionButton = true
+                notification.actionButtonTitle = "Subjects"
+                notification.otherButtonTitle = "None"
+                notification.userInfo = ["recordIDs": Array(olderSet).map({ record -> String in
+                    return record.id
+                })]
+                
+                // Private API
+                notification.setValue(true, forKey: "_showsButtons")
+                notification.setValue(matchedSubjects, forKey: "_alternateActionButtonTitles")
+                notification.setValue(true, forKey: "_alwaysShowAlternateActionMenu")
+                
+                let notificationCenter = NSUserNotificationCenter.defaultUserNotificationCenter()
+                notificationCenter.delegate = NSApplication.sharedApplication().delegate as! AppDelegate
+                notificationCenter.scheduleNotification(notification)
+                
+                NSLog("Fired a Noti")
+            }
+            else
+            {
+                for record: Record in finishedRecords
+                {
+                    record.endedAt = NSDate()
+                    realm.add(record, update: true)
+                    
+                    NSLog("FLUSH DB")
+                }
             }
         }
     }
