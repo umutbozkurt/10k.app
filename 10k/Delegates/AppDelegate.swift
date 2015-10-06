@@ -54,9 +54,9 @@ class AppDelegate: NSObject, NSApplicationDelegate
         })
         Realm.Configuration.defaultConfiguration = config
         
-        Realm().write { () -> Void in
-            Realm().deleteAll()
-        }
+//        Realm().write { () -> Void in
+//            Realm().deleteAll()
+//        }
         
         if (Realm().objects(Subject).count == 0)
         {

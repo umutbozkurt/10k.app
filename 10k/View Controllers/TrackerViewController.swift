@@ -13,11 +13,13 @@ class TrackerViewController: NSViewController
 {
     static let cellHeight = 55
     static let buttonHeight = 45
+    static let waitThreshold = 180  // Seconds
     
     @IBOutlet var recordsTableView: NSTableView!
     
     var subjects = Array<Subject>()
     var activeRecords = Array<Record>()
+    var activeApplication: String?
     var timer: NSTimer?
     let scriptPath = NSBundle.mainBundle().pathForResource("getActiveApplication", ofType: "scpt")
     
@@ -55,10 +57,11 @@ class TrackerViewController: NSViewController
     
     func track()
     {
-        let application = self.getFrontmostApplication()
+        let previousApplication = self.activeApplication
+        self.activeApplication = self.getFrontmostApplication()
         
         var subjects = self.subjects.filter { (subject) -> Bool in
-            return subject.applications.indexOf("self.name == %@", application) != nil
+            return subject.applications.indexOf("self.name == %@", self.activeApplication!) != nil
         }
     
         let realm = Realm()
@@ -82,15 +85,18 @@ class TrackerViewController: NSViewController
             
             let activeSet = Set(self.activeRecords)
             var finishedRecords = olderSet.subtract(activeSet)
+            let waitThreshold = Array(finishedRecords).reduce(false, combine: { (result, record) in
+                return result && Int(NSDate().timeIntervalSinceDate(record.startedAt)) > TrackerViewController.waitThreshold
+            })
             
-            if (olderSet.count > 1 && finishedRecords.count > 0)
+            if (olderSet.count > 1 && finishedRecords.count > 0 && waitThreshold)
             {
                 let matchedSubjects = Array(olderSet).map({ (record) -> String in
                     return record.subject!.name
                 })
                 
                 let notification = NSUserNotification()
-                notification.title = "Choose Subject for \(application)"
+                notification.title = "Choose Subject for \(previousApplication!)"
                 notification.informativeText = "What did you work on?"
                 notification.deliveryDate = NSDate(timeInterval: 1, sinceDate: NSDate())
                 notification.hasActionButton = true
