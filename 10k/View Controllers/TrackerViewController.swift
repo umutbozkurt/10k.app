@@ -85,7 +85,7 @@ class TrackerViewController: NSViewController
             
             let activeSet = Set(self.activeRecords)
             var finishedRecords = olderSet.subtract(activeSet)
-            let waitThreshold = Array(finishedRecords).reduce(false, combine: { (result, record) in
+            let waitThreshold = Array(finishedRecords).reduce(true, combine: { (result, record) in
                 return result && Int(NSDate().timeIntervalSinceDate(record.startedAt)) > TrackerViewController.waitThreshold
             })
             
