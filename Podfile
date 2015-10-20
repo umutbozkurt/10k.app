@@ -5,6 +5,8 @@ use_frameworks!
 target '10k' do
     pod 'SnapKit', '~> 0.12.0'
     pod 'RealmSwift'
+    pod 'Fabric-OSX'
+	pod 'Crashlytics-OSX'
 end
 
 target '10kTests' do

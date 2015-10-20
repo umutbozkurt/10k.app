@@ -96,11 +96,12 @@ class SubjectAppsViewController: NSViewController
     
     @IBAction func promptNextSubject(sender: NSButton)
     {
-        let currentIndex = self.getCurrentSubjectIndex()
-        self.currentSubjectLabel.stringValue = self.subjects[currentIndex + 1].name
-        self.changeNextButton(currentIndex + 1)
+        let nextIndex = self.getCurrentSubjectIndex() + 1
+        self.currentSubjectLabel.stringValue = self.subjects[nextIndex].name
+        self.changeNextButton(nextIndex)
+        self.previousButton.enabled = self.shouldPromptPreviousSubject()
         
-        self.selectApplicationsForSubjectIndex(currentIndex)
+        self.selectApplicationsForSubjectIndex(nextIndex)
     }
     
     @IBAction func promptPreviousSubject(sender: NSButton)
@@ -108,11 +109,11 @@ class SubjectAppsViewController: NSViewController
         self.nextButton.title = "Next"
         self.nextButton.action = Selector("promptNextSubject:")
         
-        let currentIndex = self.getCurrentSubjectIndex()
-        self.currentSubjectLabel.stringValue = self.subjects[currentIndex - 1].name
+        let previousIndex = self.getCurrentSubjectIndex() - 1
+        self.currentSubjectLabel.stringValue = self.subjects[previousIndex].name
         self.previousButton.enabled = self.shouldPromptPreviousSubject()
         
-        self.selectApplicationsForSubjectIndex(currentIndex)
+        self.selectApplicationsForSubjectIndex(previousIndex)
     }
     
     func changeNextButton(forIndex: Int)

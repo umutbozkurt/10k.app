@@ -8,6 +8,8 @@
 
 import Cocoa
 import RealmSwift
+import Fabric
+import Crashlytics
 
 
 @NSApplicationMain
@@ -66,11 +68,14 @@ class AppDelegate: NSObject, NSApplicationDelegate
         {
             self.popover.contentViewController = TrackerViewController(nibName:"TrackerViewController", bundle:nil)
         }
+        
+        Fabric.with([Crashlytics.self])
+        NSUserDefaults.standardUserDefaults().registerDefaults(["NSApplicationCrashOnExceptions": true])
     }
     
     func applicationWillTerminate(aNotification: NSNotification)
     {
-        
+
     }
     
     private func showPopover(sender: AnyObject?)

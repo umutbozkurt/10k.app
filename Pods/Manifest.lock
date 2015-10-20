@@ -1,4 +1,8 @@
 PODS:
+  - Crashlytics-OSX (3.3.4)
+  - Fabric-OSX (1.5.5):
+    - Fabric-OSX/Base (= 1.5.5)
+  - Fabric-OSX/Base (1.5.5)
   - Realm (0.95.0):
     - Realm/Headers (= 0.95.0)
   - Realm/Headers (0.95.0)
@@ -7,10 +11,14 @@ PODS:
   - SnapKit (0.12.0)
 
 DEPENDENCIES:
+  - Crashlytics-OSX
+  - Fabric-OSX
   - RealmSwift
   - SnapKit (~> 0.12.0)
 
 SPEC CHECKSUMS:
+  Crashlytics-OSX: bd34ff8cea31a8a707583f4de2f9aabdd98d4034
+  Fabric-OSX: 4e9c65e093eaaa536c89e801ce20065c14d65f1b
   Realm: bbb171b96728ea136ed5cd354dca2a3d6529923c
   RealmSwift: 35eeb642bf0b43dedfe363451ba3288d0e72ebb9
   SnapKit: 00c388aa3bf1944c1b55472f31e841f75bd83882
